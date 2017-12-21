@@ -36,12 +36,13 @@ public class Panel extends JPanel {
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
     
-        for(int i = 0; i < drawEntity.size(); i++){
-            drawEntity.get(i).draw(g);
-            System.out.println("draw entity");
-        }
         for(int i = 0; i < drawFields.size(); i++){
             drawFields.get(i).draw(g);
+        }
+        
+        for(int i = 0; i < drawEntity.size(); i++){
+            drawEntity.get(i).draw(g);
+            //System.out.println("draw entity");
         }
         
         for(int i = 0; i < drawBuildings.size(); i++){

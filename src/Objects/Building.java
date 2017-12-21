@@ -12,6 +12,9 @@ public class Building {
     
     
     
+    
+    
+    
     public void draw(Graphics g){
         g.setColor(color);
         g.fillRect(xPos, yPos, xSize, ySize);

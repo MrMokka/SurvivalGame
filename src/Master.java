@@ -7,6 +7,8 @@ import javafx.scene.input.KeyCode;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,6 +19,7 @@ public class Master {
     private Frame frame;
     private Panel gamePanel;
     private Player player;
+    private GameLoop gameLoop = new GameLoop();
     
     private int gridSize = 50;
     private int gameSize = 800;
@@ -24,7 +27,7 @@ public class Master {
     private KeyListener playerMove = new KeyListener() {
         @Override public void keyTyped(KeyEvent e){ }
         @Override public void keyPressed(KeyEvent e){
-            System.out.println("Pressed: " + e.getKeyChar());
+            //System.out.println("Pressed: " + e.getKeyChar());
             if(e.getKeyCode() == KeyEvent.VK_W)
                 player.setUp(true);
             if(e.getKeyCode() == KeyEvent.VK_S)
@@ -46,14 +49,31 @@ public class Master {
                 player.setRight(false);
         }
     };
+    private MouseListener mouseClick = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e){}
+        @Override
+        public void mousePressed(MouseEvent e){}
+        @Override
+        public void mouseReleased(MouseEvent e){
+        
+        }
+    
+        @Override
+        public void mouseEntered(MouseEvent e){
+            System.out.println("Mouse enter");
+        }
+    
+        @Override
+        public void mouseExited(MouseEvent e){
+            System.out.println("Mouse Exit");
+        }
+    };
     
     private ArrayList<Field> fields = new ArrayList<>();
     
     
     public Master(){
-    
-        
-        
         
         
         frame = new Frame(1200, 1000);
@@ -75,16 +95,10 @@ public class Master {
         
         gamePanel.repaint();
         
-        //gameloop();
-    }
-    
-    
-    private void gameloop(){
+        gameLoop.addEntity(player);
+        gameLoop.addPaintComp(gamePanel);
         
-        while(true){
-            player.move();
-            gamePanel.repaint();
-        }
+        gameLoop.startGameLoop();
         
     }
     
@@ -106,12 +120,13 @@ public class Master {
     
     private void createPlayer(){
         Random random = new Random();
-        int x = fields.get(random.nextInt(gridSize)).getPosX();
-        int y = fields.get(random.nextInt(gridSize)).getPosY();
+        int size = (int) Math.floor((gameSize / gridSize) / 1.5f + 0.5f);
+        int x = gameSize / 2 + size;
+        int y = gameSize / 2 + size;
     
         player = new Player();
         player.setPos(x, y);
-        int size = (int) Math.floor((gameSize / gridSize) / 1.5f + 0.5f);
+        
         player.setSize(size, size);
         gamePanel.addDrawEntity(player);
         

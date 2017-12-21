@@ -32,6 +32,12 @@ public class Player extends Entity {
     public void setRight(boolean res){ moveRight = res; }
     
     
+    
+    
+    public void tick(){
+        move();
+    }
+    
     public void move(){
         int deltaX = 0, deltaY = 0;
         if(moveUp)
@@ -49,14 +55,14 @@ public class Player extends Entity {
         xPos += (int) moveX;
         yPos += (int) moveY;
     
-        System.out.println(xPos + ":" + yPos);
+        //System.out.println(xPos + ":" + yPos);
         
     }
     
     
     
     public void draw(Graphics g){
-        System.out.println("drawing player");
+        //System.out.println("drawing player");
         g.setColor(color);
         g.fillRect(xPos, yPos, xSize, ySize);
     }

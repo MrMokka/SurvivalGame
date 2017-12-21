@@ -13,6 +13,8 @@ public class Entity {
     
     }
     
+    public void tick(){
     
+    }
     
 }

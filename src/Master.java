@@ -92,6 +92,7 @@ public class Master {
         gamePanel.addKeyListener(playerMove);
         gamePanel.setFocusable(true);
         gamePanel.requestFocusInWindow();
+        gamePanel.addMouseListener(mouseClick);
         
         gamePanel.repaint();
         

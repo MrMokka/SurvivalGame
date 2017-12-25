@@ -8,7 +8,7 @@ public class Player extends Entity {
     private int xPos, yPos;
     private int xSize = 10, ySize = 10;
     private Color color = Color.green;
-    private float moveSpeed = 1.0f;
+    private float moveSpeed = 2.5f;
     
     private boolean moveUp, moveDown, moveLeft, moveRight;
     
@@ -34,11 +34,11 @@ public class Player extends Entity {
     
     
     
-    public void tick(){
-        move();
+    public void tick(double delta){
+        move(delta);
     }
     
-    public void move(){
+    public void move(double delta){
         int deltaX = 0, deltaY = 0;
         if(moveUp)
             deltaY--;
@@ -49,8 +49,8 @@ public class Player extends Entity {
         if(moveRight)
             deltaX++;
         
-        float moveX = deltaX * moveSpeed;
-        float moveY = deltaY * moveSpeed;
+        double moveX = deltaX * moveSpeed * delta;
+        double moveY = deltaY * moveSpeed * delta;
         
         xPos += (int) moveX;
         yPos += (int) moveY;

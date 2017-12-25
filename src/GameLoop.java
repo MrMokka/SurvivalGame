@@ -92,7 +92,7 @@ public class GameLoop {
     private void doGameUpdates(double delta){
         for (int i = 0; i < entities.size(); i++)
         {
-            entities.get(i).tick();
+            entities.get(i).tick(delta);
             
         }
     }

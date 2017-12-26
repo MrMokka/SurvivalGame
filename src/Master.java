@@ -1,8 +1,7 @@
-import Objects.Field;
+import Objects.Tile;
 import Objects.Player;
 import Screen.Frame;
 import Screen.Panel;
-import javafx.scene.input.KeyCode;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -50,27 +49,17 @@ public class Master {
         }
     };
     private MouseListener mouseClick = new MouseListener() {
-        @Override
-        public void mouseClicked(MouseEvent e){}
-        @Override
-        public void mousePressed(MouseEvent e){}
+        @Override public void mouseClicked(MouseEvent e){}
+        @Override public void mousePressed(MouseEvent e){}
+        @Override public void mouseEntered(MouseEvent e){}
+        @Override public void mouseExited(MouseEvent e){}
         @Override
         public void mouseReleased(MouseEvent e){
         
         }
-    
-        @Override
-        public void mouseEntered(MouseEvent e){
-            System.out.println("Mouse enter");
-        }
-    
-        @Override
-        public void mouseExited(MouseEvent e){
-            System.out.println("Mouse Exit");
-        }
     };
     
-    private ArrayList<Field> fields = new ArrayList<>();
+    private ArrayList<Tile> tiles = new ArrayList<>();
     
     
     public Master(){
@@ -108,10 +97,10 @@ public class Master {
         for(int i = 0; i < gridSize; i++){
             for(int j = 0; j < gridSize; j++){
                 
-                Field temp = new Field();
+                Tile temp = new Tile();
                 temp.setPos(i * gameSize / gridSize, j * gameSize / gridSize);
                 temp.setSize(gameSize / gridSize, gameSize / gridSize);
-                fields.add(temp);
+                tiles.add(temp);
                 gamePanel.addDrawField(temp);
                 
             }

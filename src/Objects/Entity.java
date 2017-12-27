@@ -13,7 +13,7 @@ public class Entity {
     
     }
     
-    public void tick(){
+    public void tick(double delta){
     
     }
     
